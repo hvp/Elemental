@@ -1,0 +1,7 @@
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\ElementalGame.exe
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\ElementalGame.pdb
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\obj\x86\Debug\ElementalGame.exe
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\obj\x86\Debug\ElementalGame.pdb
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\Content\Font.xnb
