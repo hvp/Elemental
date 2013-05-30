@@ -5,3 +5,7 @@ C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGa
 C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\obj\x86\Debug\ElementalGame.exe
 C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\obj\x86\Debug\ElementalGame.pdb
 C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\Content\Font.xnb
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\Def2D.dll
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\DefDev.dll
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\Def2D.pdb
+C:\Users\Alex\Documents\GitHub\Elemental\ElementalGame\ElementalGame\ElementalGame\bin\x86\Debug\DefDev.pdb

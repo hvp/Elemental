@@ -9,6 +9,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using Def2D;
+using Def2D.Interface;
+using DefDev;
+
+using ElementalGame.Elemental;
+
 namespace ElementalGame
 {
     /// <summary>
@@ -16,18 +22,26 @@ namespace ElementalGame
     /// </summary>
     public class MainScreen : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        SpriteFont font;
+        ComboChecker checker;
+
+        ComboAction[][] combos;
 
         public MainScreen()
         {
-            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            Core.Initialize(this);
+
+            IsMouseVisible = true;
         }
         protected override void Initialize()
         {
+            Debug.Start();
+
+            Input.ResetMouse = false;
+
 
             base.Initialize();
         }
@@ -36,7 +50,17 @@ namespace ElementalGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            font = Content.Load<SpriteFont>("Font");
+            combos = new ComboAction[2][];
+
+            combos[0] = new ComboAction[4] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Light_H};
+
+            combos[1] = new ComboAction[2] { ComboAction.Light, ComboAction.Heavy };
+
+            //
+            //should implement some sort of combo sorting
+            //
+
+            checker = new ComboChecker(combos, 5);
         }
 
         protected override void UnloadContent()
@@ -45,24 +69,16 @@ namespace ElementalGame
 
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            float seconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // TODO: Add your update logic here
+            Debug.Write("Elemental Game V.1");
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            spriteBatch.Begin();
-
-            spriteBatch.DrawString(font, "Elemental Game", Vector2.Zero, Color.Black);
-
-            spriteBatch.End();
+            Core.Graphics.GraphicsDevice.Clear(Color.Black);
 
             base.Draw(gameTime);
         }
