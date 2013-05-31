@@ -107,9 +107,9 @@ namespace ElementalGame.Elemental
             }
 
 
-            if (!hold && timer >= .2f)
+            if (!hold && timer >= time_pause)
             {
-                timer = .05f;
+                timer = tap_delay;
                 checker.AddAction(ComboAction.Pause);
             }
         }

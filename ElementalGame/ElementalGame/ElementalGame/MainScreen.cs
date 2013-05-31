@@ -24,12 +24,6 @@ namespace ElementalGame
     {
         SpriteBatch spriteBatch;
 
-        ComboChecker checker;
-
-        ComboTree tree = ComboTree.Complete;
-
-        PlayerInput player = new PlayerInput();
-
         public MainScreen()
         {
             Content.RootDirectory = "Content";
@@ -41,10 +35,11 @@ namespace ElementalGame
 
         protected override void Initialize()
         {
-            Debug.Start();
+            //true tells the debugger to scan your project for testloops
+            // pageup/pagedown will iterate through the loops it finds
+            Debug.Start(true);
 
             Input.ResetMouse = false;
-
 
             base.Initialize();
         }
@@ -52,8 +47,6 @@ namespace ElementalGame
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            checker = new ComboChecker(tree);
         }
 
         protected override void UnloadContent()
@@ -65,10 +58,6 @@ namespace ElementalGame
             float seconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             Debug.Write("Elemental Game V.1");
-
-            player.Update(seconds, checker);
-
-            checker.Update(seconds);
 
             base.Update(gameTime);
         }
