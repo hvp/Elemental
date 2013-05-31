@@ -44,8 +44,6 @@ namespace ElementalGame.Elemental
         public ComboChecker(ComboAction[][] combos, int longest)
         {
             _combos = combos;
-
-           Debug.Post(longest);
            
             _actions = new Queue<ComboAction>(longest);
         }
@@ -53,9 +51,19 @@ namespace ElementalGame.Elemental
 
         public int Update(float seconds)
         {
+            foreach (ComboAction i in _actions) Debug.Write(i);
+
+
 
             return -1;
         }
+
+        public void AddAction(ComboAction action)
+        {
+            _actions.Enqueue(action);
+        }
+
+        public void Clear() { _actions.Clear(); }
 
     }
 }

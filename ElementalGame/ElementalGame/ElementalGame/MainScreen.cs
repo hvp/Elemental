@@ -28,6 +28,16 @@ namespace ElementalGame
 
         ComboAction[][] combos;
 
+        //temp commands for input
+        Command lightStart = Command.KeyPr(Keys.A);
+        Command lightFinish = Command.KeyRel(Keys.A);
+
+        Command clearCombo = Command.KeyPr(Keys.R);
+
+        bool lightS = false;
+
+        float timer = 0;
+
         public MainScreen()
         {
             Content.RootDirectory = "Content";
@@ -72,6 +82,33 @@ namespace ElementalGame
             float seconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             Debug.Write("Elemental Game V.1");
+
+            if (clearCombo.Given) checker.Clear();
+
+            //temp timing values
+            float time_h = .15f;
+            float tap_delay = .05f;
+
+            timer += seconds;
+
+            if (lightStart.Given && timer >= tap_delay)
+            {
+                timer = 0;
+                lightS = true;
+            }
+
+            if(lightS && lightFinish.Given)
+            {
+                if (timer > time_h) checker.AddAction(ComboAction.Light_H);
+                else checker.AddAction(ComboAction.Light);
+
+                lightS = false;
+                timer = 0;
+            }
+
+            Debug.Write(Math.Round(timer, 2));
+
+            checker.Update(seconds);
 
             base.Update(gameTime);
         }
