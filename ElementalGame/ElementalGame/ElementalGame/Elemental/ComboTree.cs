@@ -59,7 +59,7 @@ namespace ElementalGame.Elemental
                 maker.AddCombo(new ComboAction[5] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Pause, ComboAction.Light_H });
 
                 // heavy
-                maker.AddCombo(new ComboAction[2] { ComboAction.Dash, ComboAction.Heavy });
+                maker.AddCombo(new ComboAction[2] { ComboAction.Dash, ComboAction.Heavy_H });
 
                 maker.AddCombo(new ComboAction[3] { ComboAction.Heavy, ComboAction.Heavy, ComboAction.Heavy});
 

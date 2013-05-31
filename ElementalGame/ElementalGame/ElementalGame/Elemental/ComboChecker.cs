@@ -61,7 +61,7 @@ namespace ElementalGame.Elemental
 
             if(_branch != null)_branch = _branch[action];
 
-            if (_branch == null) _branch = _tree[action];
+            if (_branch == null)_branch = _tree[action];
 
             if (_branch != null) Debug.Post(_branch.Key);
             else Debug.Post("-");

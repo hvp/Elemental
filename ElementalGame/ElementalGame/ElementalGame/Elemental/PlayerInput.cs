@@ -36,8 +36,9 @@ namespace ElementalGame.Elemental
     {
         static float time_hold = .2f;
         static float tap_delay = .05f;
-        static float time_max = .2f;
+        static float time_holdMax = .2f;
         static float time_pause = .2f;
+        static float time_max = .2f;
 
         public PlayerInputAction Light, Heavy, Special;
         public Command DashLs, DashRs;
@@ -131,7 +132,7 @@ namespace ElementalGame.Elemental
                     a.started = false;
                     timer = 0;
                 }
-                else if (timer > time_max)
+                else if (timer > time_holdMax)
                 {
                     checker.AddAction(a.Hold);
                     a.started = false;
