@@ -36,23 +36,27 @@ namespace ElementalGame.Elemental
 
     public class ComboChecker
     {
-        protected Queue<ComboAction> _actions;
+        protected ComboTree _tree;
+        protected CTBranch _branch;
 
-        protected ComboAction[][] _combos;
+        protected float _validTimer;
 
-
-        public ComboChecker(ComboAction[][] combos, int longest)
+        public ComboChecker(ComboTree tree)
         {
-            _combos = combos;
-           
-            _actions = new Queue<ComboAction>(longest);
+            _tree = tree;
+            _validTimer = 0;
         }
 
 
         public int Update(float seconds)
         {
-            foreach (ComboAction i in _actions) Debug.Write(i);
-
+            _validTimer += seconds;
+            if (_validTimer > 1)
+            {
+                _validTimer = 0;
+                _branch = null;
+                Debug.Post("-");
+            }
 
 
             return -1;
@@ -60,10 +64,15 @@ namespace ElementalGame.Elemental
 
         public void AddAction(ComboAction action)
         {
-            _actions.Enqueue(action);
+            _branch = _branch == null ? _tree[action] : _branch[action];
+
+            if (_branch != null) Debug.Post(_branch.Key);
+            else Debug.Post("-");
+
+            _validTimer = 0;
         }
 
-        public void Clear() { _actions.Clear(); }
+        public void Clear() { }
 
     }
 }

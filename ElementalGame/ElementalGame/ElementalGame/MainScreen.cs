@@ -38,6 +38,8 @@ namespace ElementalGame
 
         float timer = 0;
 
+        ComboTree tree;
+
         public MainScreen()
         {
             Content.RootDirectory = "Content";
@@ -60,17 +62,15 @@ namespace ElementalGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            combos = new ComboAction[2][];
+            //test for new combo tree maker
+            ComboTreeMaker ctm = new ComboTreeMaker();
 
-            combos[0] = new ComboAction[4] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Light_H};
+            ctm.AddCombo(new ComboAction[4] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Light_H });
+            ctm.AddCombo(new ComboAction[3] { ComboAction.Light, ComboAction.Light_H, ComboAction.Light_H });
 
-            combos[1] = new ComboAction[2] { ComboAction.Light, ComboAction.Heavy };
+            tree = ctm.Finalize();
 
-            //
-            //should implement some sort of combo sorting
-            //
-
-            checker = new ComboChecker(combos, 5);
+            checker = new ComboChecker(tree);
         }
 
         protected override void UnloadContent()
@@ -86,7 +86,7 @@ namespace ElementalGame
             if (clearCombo.Given) checker.Clear();
 
             //temp timing values
-            float time_h = .15f;
+            float time_hold = .2f;
             float tap_delay = .05f;
 
             timer += seconds;
@@ -99,7 +99,7 @@ namespace ElementalGame
 
             if(lightS && lightFinish.Given)
             {
-                if (timer > time_h) checker.AddAction(ComboAction.Light_H);
+                if (timer > time_hold) checker.AddAction(ComboAction.Light_H);
                 else checker.AddAction(ComboAction.Light);
 
                 lightS = false;
