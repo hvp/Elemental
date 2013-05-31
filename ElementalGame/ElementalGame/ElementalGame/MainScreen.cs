@@ -26,19 +26,9 @@ namespace ElementalGame
 
         ComboChecker checker;
 
-        ComboAction[][] combos;
+        ComboTree tree = ComboTree.Complete;
 
-        //temp commands for input
-        Command lightStart = Command.KeyPr(Keys.A);
-        Command lightFinish = Command.KeyRel(Keys.A);
-
-        Command clearCombo = Command.KeyPr(Keys.R);
-
-        bool lightS = false;
-
-        float timer = 0;
-
-        ComboTree tree;
+        PlayerInput player = new PlayerInput();
 
         public MainScreen()
         {
@@ -48,6 +38,7 @@ namespace ElementalGame
 
             IsMouseVisible = true;
         }
+
         protected override void Initialize()
         {
             Debug.Start();
@@ -62,14 +53,6 @@ namespace ElementalGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //test for new combo tree maker
-            ComboTreeMaker ctm = new ComboTreeMaker();
-
-            ctm.AddCombo(new ComboAction[4] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Light_H });
-            ctm.AddCombo(new ComboAction[3] { ComboAction.Light, ComboAction.Light_H, ComboAction.Light_H });
-
-            tree = ctm.Finalize();
-
             checker = new ComboChecker(tree);
         }
 
@@ -83,30 +66,7 @@ namespace ElementalGame
 
             Debug.Write("Elemental Game V.1");
 
-            if (clearCombo.Given) checker.Clear();
-
-            //temp timing values
-            float time_hold = .2f;
-            float tap_delay = .05f;
-
-            timer += seconds;
-
-            if (lightStart.Given && timer >= tap_delay)
-            {
-                timer = 0;
-                lightS = true;
-            }
-
-            if(lightS && lightFinish.Given)
-            {
-                if (timer > time_hold) checker.AddAction(ComboAction.Light_H);
-                else checker.AddAction(ComboAction.Light);
-
-                lightS = false;
-                timer = 0;
-            }
-
-            Debug.Write(Math.Round(timer, 2));
+            player.Update(seconds, checker);
 
             checker.Update(seconds);
 

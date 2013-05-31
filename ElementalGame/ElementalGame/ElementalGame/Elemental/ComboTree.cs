@@ -41,6 +41,41 @@ namespace ElementalGame.Elemental
 
     public class ComboTree
     {
+        public static ComboTree Complete
+        {
+            get
+            {
+                ComboTreeMaker maker = new ComboTreeMaker();
+
+                // light
+                maker.AddCombo(new ComboAction[4] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Light });
+
+                maker.AddCombo(new ComboAction[2] { ComboAction.Dash, ComboAction.Light });
+
+                maker.AddCombo(new ComboAction[3] { ComboAction.Light, ComboAction.Pause, ComboAction.Light });
+
+                maker.AddCombo(new ComboAction[5] { ComboAction.Light, ComboAction.Light, ComboAction.Pause, ComboAction.Light, ComboAction.Light });
+
+                maker.AddCombo(new ComboAction[5] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Pause, ComboAction.Light_H });
+
+                // heavy
+                maker.AddCombo(new ComboAction[2] { ComboAction.Dash, ComboAction.Heavy });
+
+                maker.AddCombo(new ComboAction[3] { ComboAction.Heavy, ComboAction.Heavy, ComboAction.Heavy});
+
+                maker.AddCombo(new ComboAction[4] { ComboAction.Heavy, ComboAction.Heavy, ComboAction.Pause, ComboAction.Heavy });
+
+                // light and heavy
+                maker.AddCombo(new ComboAction[3] { ComboAction.Light, ComboAction.Light, ComboAction.Heavy });
+
+                maker.AddCombo(new ComboAction[5] { ComboAction.Light, ComboAction.Light, ComboAction.Light, ComboAction.Pause, ComboAction.Heavy });
+
+                maker.AddCombo(new ComboAction[4] { ComboAction.Light, ComboAction.Pause, ComboAction.Heavy, ComboAction.Heavy });
+
+                return maker.Finalize();
+            }
+        }
+
         private int _longest;
 
         private CTBranch[] branches;

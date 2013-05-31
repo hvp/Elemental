@@ -20,18 +20,11 @@ namespace ElementalGame.Elemental
         Light_H,
         Heavy,
         Heavy_H,
-        Ranged,
-        Ranged_H,
+        Special,
+        Special_H,
         Jump,
         Jump_H,
-        Left,
-        Left_H,
-        Right,
-        Right_H,
-        Up,
-        Up_H,
-        Down,
-        Down_H,
+        Dash
     }
 
     public class ComboChecker
@@ -64,7 +57,11 @@ namespace ElementalGame.Elemental
 
         public void AddAction(ComboAction action)
         {
-            _branch = _branch == null ? _tree[action] : _branch[action];
+            if (action == ComboAction.Pause && _branch == null) return;
+
+            if(_branch != null)_branch = _branch[action];
+
+            if (_branch == null) _branch = _tree[action];
 
             if (_branch != null) Debug.Post(_branch.Key);
             else Debug.Post("-");

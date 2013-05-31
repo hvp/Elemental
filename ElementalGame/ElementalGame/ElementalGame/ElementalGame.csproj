@@ -116,7 +116,7 @@
     <Compile Include="Elemental\ComboChecker.cs" />
     <Compile Include="Elemental\ComboTree.cs" />
     <Compile Include="Elemental\ComboTreeMaker.cs" />
-    <Compile Include="Elemental\TweenAnim.cs" />
+    <Compile Include="Elemental\PlayerInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MainScreen.cs" />
